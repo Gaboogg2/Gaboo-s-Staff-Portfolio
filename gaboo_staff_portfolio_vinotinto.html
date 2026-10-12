@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gaboo's staff portfolio — moderation, administration, and community management.">
+  <title>Gaboo | Staff Portfolio</title>
+  <style>
+    /* EDITABLE: COLOR PALETTE — change these values to customize the whole website. */
+    :root {
+      --wine: #742f3b;
+      --wine-dark: #4c2029;
+      --wine-soft: #a96670;
+      --rose-pale: #ead5d4;
+      --cream: #fbf7f0;
+      --paper: #fffdf9;
+      --ink: #30272a;
+      --muted: #75676a;
+      --line: #e7d9d6;
+      --shadow: 0 18px 50px rgba(76, 32, 41, .09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 5;
+      background: rgba(251, 247, 240, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; }
+    .brand { font-weight: 850; letter-spacing: -.04em; font-size: 1.3rem; color: var(--wine-dark); text-decoration: none; }
+    .brand span { color: var(--wine-soft); }
+    nav { display: flex; flex-wrap: wrap; gap: 20px; }
+    nav a { text-decoration: none; color: var(--muted); font-size: .9rem; font-weight: 650; }
+    nav a:hover { color: var(--wine); }
+    .hero { padding: 92px 0 78px; }
+    .hero-grid { display: grid; grid-template-columns: 1.45fr .8fr; gap: 48px; align-items: center; }
+    .eyebrow { color: var(--wine); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
+    h1 { margin: 12px 0 14px; font-size: clamp(3rem, 8vw, 5.7rem); line-height: .98; letter-spacing: -.075em; color: var(--wine-dark); }
+    h1 em { font-style: normal; color: var(--wine-soft); }
+    .roles { color: var(--wine); font-weight: 750; font-size: 1.05rem; }
+    .intro { color: var(--muted); max-width: 620px; font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 12px; font-weight: 750; text-decoration: none; border: 1px solid var(--wine); transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--wine); color: white; }
+    .btn.secondary { color: var(--wine); background: transparent; }
+    .profile-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 30px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .profile-card::before { content: ""; position: absolute; width: 170px; height: 170px; border-radius: 50%; background: var(--rose-pale); right: -65px; top: -70px; }
+    .monogram { position: relative; width: 76px; height: 76px; display: grid; place-items: center; background: var(--wine); color: white; font-weight: 900; font-size: 1.6rem; border-radius: 22px; margin-bottom: 22px; }
+    .profile-card h2 { margin: 0 0 6px; color: var(--wine-dark); }
+    .profile-card p { margin: 0; color: var(--muted); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .tag { background: var(--rose-pale); color: var(--wine-dark); border-radius: 99px; padding: 6px 10px; font-size: .78rem; font-weight: 750; }
+    section { padding: 66px 0; }
+    .section-head { max-width: 680px; margin-bottom: 28px; }
+    .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.045em; color: var(--wine-dark); margin: 6px 0 10px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .about-panel { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 4vw, 38px); }
+    .about-panel p { margin: 0 0 14px; color: var(--muted); }
+    .about-panel p:last-child { margin-bottom: 0; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+    .card .type { color: var(--wine-soft); text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; font-weight: 850; }
+    .card h3 { margin: 7px 0 3px; color: var(--wine-dark); font-size: 1.18rem; }
+    .card .org { color: var(--wine); font-weight: 750; margin: 0 0 12px; }
+    .card p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .skill { padding: 17px 18px; border: 1px solid var(--line); background: var(--paper); border-radius: 14px; color: var(--wine-dark); font-weight: 750; }
+    .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .step { border-top: 3px solid var(--wine-soft); padding: 20px 18px; background: rgba(255,253,249,.65); border-radius: 0 0 14px 14px; }
+    .step .num { color: var(--wine-soft); font-size: .8rem; font-weight: 900; letter-spacing: .12em; }
+    .step h3 { margin: 8px 0; color: var(--wine-dark); }
+    .step p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .contact { background: var(--wine-dark); color: var(--cream); border-radius: 26px; padding: clamp(28px, 6vw, 52px); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .contact h2 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.045em; }
+    .contact p { margin: 0; color: #e7d9d6; max-width: 560px; }
+    .contact .btn { background: var(--cream); color: var(--wine-dark); border-color: var(--cream); white-space: nowrap; }
+    footer { padding: 28px 0 36px; color: var(--muted); font-size: .86rem; }
+    footer .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 20px; }
+    @media (max-width: 760px) {
+      .nav { align-items: flex-start; flex-direction: column; justify-content: center; padding: 14px 0; gap: 8px; }
+      nav { gap: 12px; }
+      .hero { padding: 60px 0 44px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .cards, .skills, .steps { grid-template-columns: 1fr; }
+      .contact { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <!-- EDITABLE: Your portfolio name / alias. -->
+      <a class="brand" href="#home">Gaboo<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Staff portfolio</div>
+          <!-- EDITABLE: Main heading and role labels. -->
+          <h1>Hi, I'm <em>Gaboo.</em></h1>
+          <div class="roles">Moderator · Administrator · Community Manager</div>
+          <!-- EDITABLE: Short introduction. -->
+          <p class="intro">I help online communities feel organized, welcoming, and safe through fair moderation, clear communication, and reliable staff support.</p>
+          <div class="actions">
+            <a class="btn primary" href="#experience">View experience</a>
+            <a class="btn secondary" href="#contact">Contact me</a>
+          </div>
+        </div>
+        <aside class="profile-card">
+          <div class="monogram">G.</div>
+          <!-- EDITABLE: Profile card text. -->
+          <h2>Community-focused staff</h2>
+          <p>Discord communities · Roblox communities · Staff teamwork</p>
+          <div class="tag-row">
+            <span class="tag">Fairness</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Consistency</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2>People first. Clear standards.</h2>
+        </div>
+        <div class="about-panel">
+          <!-- EDITABLE: Replace these paragraphs with your own biography. -->
+          <p>I'm a staff member focused on moderation, administration, and community management, mainly within Discord and Roblox communities. I value a calm, organized approach and believe that a good staff team should make a community better for everyone.</p>
+          <p>When handling an issue, I aim to understand the context before acting, communicate respectfully, and apply the rules consistently. I also value teamwork, accountability, and following up when something needs attention.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Experience</div>
+          <h2>Roles & communities</h2>
+          <p>These cards are editable. Keep only the roles that accurately represent your experience.</p>
+        </div>
+        <div class="cards">
+          <!-- EDITABLE: Role, community, dates, and description. Do not add dates unless accurate. -->
+          <article class="card">
+            <div class="type">Administration</div>
+            <h3>Administrator</h3>
+            <p class="org">TideBound</p>
+            <p>[ADD YOUR DATES] — Supporting community operations, staff coordination, and the consistent handling of community issues.</p>
+          </article>
+          <article class="card">
+            <div class="type">Community management</div>
+            <h3>Community Manager</h3>
+            <p class="org">Lemonade Studios</p>
+            <p>[ADD YOUR DATES] — Helping maintain communication, organize community activities, and support a positive member experience.</p>
+          </article>
+          <article class="card">
+            <div class="type">Moderation</div>
+            <h3>Senior Moderator</h3>
+            <p class="org">[COMMUNITY NAME]</p>
+            <p>[ADD YOUR DATES] — Reviewing reports, supporting moderators, and helping resolve issues fairly and calmly.</p>
+          </article>
+          <article class="card">
+            <div class="type">Moderation</div>
+            <h3>Moderator</h3>
+            <p class="org">[COMMUNITY NAME]</p>
+            <p>[ADD YOUR DATES] — Enforcing rules, assisting members, and responding to reports or concerns.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What I bring</div>
+          <h2>Core skills</h2>
+        </div>
+        <!-- EDITABLE: Add, remove, or rename skill cards. -->
+        <div class="skills">
+          <div class="skill">Community Management</div>
+          <div class="skill">Moderation & Rule Enforcement</div>
+          <div class="skill">Staff Coordination</div>
+          <div class="skill">Conflict Resolution</div>
+          <div class="skill">Tickets & Reports</div>
+          <div class="skill">Problem Solving</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">My approach</div>
+          <h2>Calm, fair, and consistent</h2>
+          <p>My goal is to solve problems without creating unnecessary conflict.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="num">01 / UNDERSTAND</div>
+            <h3>Check the context</h3>
+            <p>I review the available information before reaching a conclusion and avoid making assumptions too quickly.</p>
+          </article>
+          <article class="step">
+            <div class="num">02 / RESPOND</div>
+            <h3>Act fairly</h3>
+            <p>I communicate clearly, remain respectful, and apply the rules consistently to everyone.</p>
+          </article>
+          <article class="step">
+            <div class="num">03 / FOLLOW UP</div>
+            <h3>Keep things organized</h3>
+            <p>I value useful documentation, teamwork, and making sure important issues are not forgotten.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <div class="eyebrow" style="color:#e7b9bf;">Contact</div>
+            <!-- EDITABLE: Contact heading and message. -->
+            <h2>Let's connect.</h2>
+            <p>For staff opportunities, community projects, or professional inquiries, feel free to reach out.</p>
+          </div>
+          <!-- EDITABLE: Replace https://discord.com/ with your real Discord profile URL or another contact link. -->
+          <a class="btn" href="https://discord.com/" target="_blank" rel="noopener noreferrer">Contact Gaboo ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <!-- EDITABLE: Footer name and year. -->
+      <span>© 2026 Gaboo. Staff Portfolio.</span>
+      <span>Built with care · Burgundy & cream</span>
+    </div>
+  </footer>
+</body>
+</html>
